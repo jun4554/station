@@ -23,5 +23,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./station/
+          local-dir: ./
           server-dir: /domains/ji-develop.com/public_html/station/old/
+          exclude: |
+            **/.git*
+            **/.github/**
+            README.md
