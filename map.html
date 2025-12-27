@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+    <title>全国駅マップ</title>
+    <meta charset="utf-8"/>
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico">
+    <meta name="keyword" content="全国駅マップ,全国駅地図,駅別乗降客数,駅,電車,乗降客数,乗員客数,地図,マップ">
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/plugin/jquery/jquery.range.css">
+    <link rel="stylesheet" href="css/plugin/L.Control.Zoomslider.css" />
+    <link rel="stylesheet" href="css/plugin/leaflet.responsive.popup.css" />
+    <link rel="stylesheet" href="css/fontawesome/all.min.css" />
+    <link rel="stylesheet" href="css/plugin/leaflet-sidebar.css" />
+    <link rel="stylesheet" href="css/accordion.css" />
+    <!-- JS -->
+    <script src="js/plugin/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/plugin/jquery/1.8.24/jquery-ui.min.js"></script>
+    <script src="js/plugin/jquery/jquery.range-min.js"></script>
+    <script src="js/plugin/L.Control.Zoomslider.js"></script>
+    <script src="js/plugin/leaflet.responsive.popup.js"></script>
+    <script src="js/plugin/leaflet-sidebar.min.js"></script>
+    <script src="js/accordion.js"></script>
+    <script src="js/js.cookie.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4248082385618462" crossorigin="anonymous"></script>
+    <script src="js/map.js"></script>
+</head>
+<body>
+    <div id="header">
+        <img id="title" src="img/title.png" alt="全国駅マップ" />
+        <!-- 全国駅マップ広告 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:350px;height:50px"
+             data-ad-client="ca-pub-4248082385618462"
+             data-ad-slot="8566489842">
+        </ins>
+        <table id="mark" height=40>
+            <tr>
+                <td style="background-color: #800080; width:20px;"></td>
+                <td>30万人<br>以上</td>
+                <td style="background-color: #FF0000; width:20px;"></td>
+                <td>10万人<br>以上</td>
+                <td style="background-color: #734E30; width:20px;"></td>
+                <td>5万人<br>以上</td>
+                <td style="background-color: #FFE500; width:20px;"></td>
+                <td>3万人<br>以上</td>
+                <td style="background-color: #4BB661; width:20px;"></td>
+                <td>1万人<br>以上</td>
+                <td style="background-color: #1869F0; width:20px;"></td>
+                <td>5千人<br>以上</td>
+                <td style="background-color: #A4C5F9; width:20px;"></td>
+                <td>1千人<br>以上</td>
+                <td style="background-color: #dcdcdc; width:20px;"></td>
+                <td>1千人<br>未満</td>
+            </tr>
+        </table>
+    </div>
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#main" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#search" role="tab"><i class="fa fa-search"></i></a></li>
+                <li><a href="#filter" role="tab"><i class="fa fa-filter"></i></a></li>
+                <li><a href="#database" role="tab"><i class="fa fa-database"></i></a></li>
+                <li><a href="#contact" role="tab"><i class="fa fa-envelope"></i></a></li>
+            </ul>
+            <ul role="tablist">
+                <li><a href="#setting" role="tab"><i class="fa fa-cog"></i></a></li>
+            </ul>
+        </div>
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="main">
+                <h1 class="sidebar-header">
+                    全国駅マップ
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+                <h3>色別乗降客数（1日あたり）</h3>
+                <table>
+                    <tr>
+                       <td style="background-color: #800080; width:40px;"></td>
+                       <td>30万人以上</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #FF0000; width:40px;"></td>
+                        <td>10万人以上</td>
+                   </tr>
+                   <tr>
+                        <td style="background-color: #734E30; width:40px;"></td>
+                        <td>5万人以上</td>
+                   </tr>
+                   <tr>
+                       <td style="background-color: #FFE500; width:40px;"></td>
+                       <td>3万人以上</td>
+                   </tr>
+                   <tr>
+                       <td style="background-color: #4BB661; width:40px;"></td>
+                       <td>1万人以上</td>
+                   </tr>
+                   <tr>
+                       <td style="background-color: #1869F0; width:40px;"></td>
+                       <td>5千人以上</td>
+                   </tr>
+                   <tr>
+                       <td style="background-color: #A4C5F9; width:40px;"></td>
+                       <td>1千人以上</td>
+                   </tr>
+                   <tr>
+                       <td style="background-color: #dcdcdc; width:40px;"></td>
+                       <td>1千人未満</td>
+                   </tr>
+                </table>
+                <p class="outline">
+                    乗降客数が公開されていない駅を非表示にしたい場合は、設定で「表示する」のチェックを外してください。
+                </p>
+                <h4>乗降客数データについて</h4>
+                    <p class="outline">各駅の乗降客数は「クリエイティブ・コモンズ・表示・継承ライセンス3.0」の下で公表されたウィキペディア日本語版の各駅ページ内のデータを元に表示しています。<br> このデータは、「クリエイティブ・コモンズ・表示・継承ライセンス3.0の下、二次利用できます。</p>
+            </div>
+            <!-- Search Tab -->
+            <div class="sidebar-pane" id="search">
+                <h1 class="sidebar-header">検索<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h3>駅名</h3>
+                <p><input type="text" id="searchText" size="30" maxlength="20" inputmode="kana" style="ime-mode:active;"></p>
+                <div id="searchStationList"></div>
+                <p><span id="searchError">※駅名は見つかりませんでした。</span>
+            </div>
+            <!-- Filter Tab -->
+            <div class="sidebar-pane" id="filter">
+                <h1 class="sidebar-header-filter">絞り込み<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <div class="section s_01">
+                    <div class="accordion_one">
+                        <div class="accordion_header">都道府県<div class="i_box"><i class="one_i"></i></div>
+                        </div>
+                        <div class="accordion_inner">
+                            <div class="box_one">
+                                <p class="txt_a_ac"><div id="prefectureList"></div></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion_one">
+                        <div class="accordion_header">路線<div class="i_box"><i class="one_i"></i></div>
+                        </div>
+                        <div class="accordion_inner">
+                            <div class="box_one">
+                                <p class="txt_a_ac"><div id="lineList"></div></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion_one">
+                        <div class="accordion_header">乗降客数<div class="i_box"><i class="one_i"></i></div>
+                        </div>
+                        <div class="accordion_inner">
+                            <div class="box_one">
+                                <p class="txt_a_ac">
+                                    <p style="margin-left: 20px;margin-top: 30px;margin-bottom: 50px;">
+                                        <input id="range-slider" type="hidden" value="0,600000"/>
+                                    </p>
+                                    <p style="margin-left: 20px;">
+                                        <input type="text" id="passengerTextFrom" class="passengerText" size="8" maxlength="6" inputmode="numeric" style="ime-mode:disabled;" onblur="passengerTextChange();"><span class="unit">人</span>〜<input type="text" id="passengerTextTo" class="passengerText" size="8" maxlength="6" inputmode="numeric" style="ime-mode:disabled;" onblur="passengerTextChange();"><span class="unit">人</span>
+                                    </p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Database Tab -->
+            <div class="sidebar-pane" id="database">
+                <h1 class="sidebar-header">一覧<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <div id="list"></div>
+            </div>
+            <!-- Contact Tab -->
+            <div class="sidebar-pane" id="contact">
+                <h1 class="sidebar-header">お問い合わせ<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <p class="contactText">このサイトに関する問い合わせは下記まで</p>
+                <p class="contactText"><a href="https://ji-develop.com/blog/お問い合わせ" target="_blank">お問い合わせ</a>
+            </div>
+            <!-- Setting Tab -->
+            <div class="sidebar-pane" id="setting">
+                <h1 class="sidebar-header">設定<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h3>1度に表示する駅数</h3>
+                <p class="settingText">※表示数を増やすと処理に時間がかかります。</p>
+                <div>
+                    <input type="radio" id="show100" name="showNum" value="100">
+                    <label for="show100">100</label>
+                </div>
+                <div>
+                    <input type="radio" id="show200" name="showNum" value="200" checked>
+                    <label for="show200">200（デフォルト）</label>
+                </div>
+                <div>
+                    <input type="radio" id="show300" name="showNum" value="300">
+                    <label for="show300">300</label>
+                </div>
+                <div>
+                    <input type="radio" id="show400" name="showNum" value="400">
+                    <label for="show400">400</label>
+                </div>
+                <div>
+                    <input type="radio" id="show500" name="showNum" value="500">
+                    <label for="show500">500</label>
+                </div>
+                <div>
+                    <input type="radio" id="show1000" name="showNum" value="1000">
+                    <label for="show1000">1000</label>
+                </div>
+                <!--
+                <div>
+                    <input type="radio" id="show10000" name="showNum" value="10000">
+                    <label for="show10000">制限無し</label>
+                </div>
+                -->
+                <h3>乗降客数が非公表の駅</h3>
+                <label id="nonPublicCheckBoxLabel"><input type="checkbox" id="nonPublicCheckBox" name="nonPublicCheckBox" checked>表示する</label>
+            </div>
+        </div>
+    </div>
+    <div id="mapid"></div>
+    <!-- Display Over Dialog -->
+    <div id="dialog">拡大してください</div>
+</body>
+</html>

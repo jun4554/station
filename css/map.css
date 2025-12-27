@@ -1,0 +1,105 @@
+body {
+    font-family: "Meiryo UI", "メイリオ", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+#mapid {
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    #title, #mark {display: none;}
+    #mapid {width: 100%;height: calc(100% - 50px);}
+    #dialog{
+        display: none;
+        text-align: center;
+        line-height: 50px;
+        position: absolute; 
+        top: 45%;
+        width: 100%;
+        height: 50px;
+        background-color:#FFFFFF;
+        opacity:0.8;
+        z-index: 1;
+    }
+}
+@media (min-width: 768px) {
+    #mapid {width: 100%;height: 94%;}
+    #dialog{
+        display: none;
+        text-align: center;
+        line-height: 50px;
+        position: absolute; 
+        top: 45%;
+        width: 100%;
+        height: 50px;
+        background-color:#FFFFFF;
+        opacity:0.8;
+        z-index: 1;
+    }
+    #mark tr td {font-size: small;}
+}
+td { vertical-align: middle;  /* 中央揃え */}
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* スライドバーコンテンツ */
+#searchError {
+    display: none;
+    color: #FF0000;
+    font-size: small;
+}
+
+button.link-style-btn {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #0033cc;
+    text-align: left;
+}
+button.link-style-btn:hover {
+    text-decoration: underline;
+    color: #002080;
+}
+
+.lineListName, .prefectureListName {font-size: small;}
+.passengerText {text-align: right;}
+.unit {font-size: small;}
+#nonPublicCheckBoxLabel {font-size: small;}
+.outline {font-size: small;}
+.contactText {font-size: small;}
+.settingText {font-size: x-small;}
+
+/* ポップアップ */
+.lineName {font-size: 80%;}
+.remarks {font-size: 75%;}
+
+/* アコーディオン */
+.menu__item {
+  background: #5200b7;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1px;
+  position: relative;
+}
+.menu__item__link {
+  color: #fff;
+  display: block;
+  padding: 1rem;
+}
+ 
+.submenu {
+  background: #fff;
+  display: none;
+}
+.submenu__item {
+  border-bottom: 1px solid #5200b7;
+  color: #222;
+  padding: 1rem;
+}
