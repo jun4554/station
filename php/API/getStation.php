@@ -1,7 +1,6 @@
 <?php
 
 require "returnJson.php";
-require "../validation.php";
 require "../connectDB.php";
 require "query/getStationQuery.php";
 
@@ -22,16 +21,11 @@ require "query/getStationQuery.php";
 $station_name = $_REQUEST['station_name'];
 $pattern_match = $_REQUEST['pattern_match'];
 
-// 結果格納変数
-$result = [];
-
 try {
 
     // パラメータ検証
     if (empty($station_name)) {
         throw new Exception("パラメータ:station_nameが指定されていません");
-    } else if (validation($station_name)) {
-        throw new Exception("不正なリクエストです");
     }
     if (empty($pattern_match)) {
         throw new Exception("パラメータ:pattern_matchが指定されていません");
@@ -39,77 +33,37 @@ try {
         throw new Exception("パラメータ:pattern_matchは1または2を指定してください");
     }
 
-    // データベース接続
-    $mysqli = connectDB();
-    if ($mysqli == null) {
-        throw new Exception("データベースの接続に失敗しました");
+    // --- DB接続 ---
+    $pdo = connectDB();
+    if ($pdo === null) {
+        exit();
     }
 
     // クエリ生成
-    $query = getStationQuery($station_name, $pattern_match);
-
-    $select = $mysqli -> query($query);
-    //クエリ失敗
-    if(!$select) {
-        throw new Exception($mysqli->error);
+    $stmt = $pdo->prepare(getStationQuery($pattern_match));
+    if ($stmt === false) {
+        throw new RuntimeException('getStationName.php SQL prepare failed');
+    }
+    if ($pattern_match == 2) {
+        $station_name = '%' . $station_name . '%';
+    }
+    $stmt->bindValue(':station_name', $station_name, PDO::PARAM_STR);
+    
+    // クエリ実行
+    $stmt->execute();
+    if ($stmt === false) {
+        throw new  RuntimeException('getStationName.php SQL execute failed');
     }
 
-    //レコード件数
-    $row_count = $select->num_rows;
-    if ($row_count == 0) {
-        throw new Exception("該当する駅はありません");
-    }
-
-    //連想配列で取得
-    $stack = array();
-    while($row = $select->fetch_array(MYSQLI_ASSOC)){
-
-        $sourceUrl = $row["sourceUrl"];
-        if ($sourceUrl == "" && $row["passenger"] != "") {
-             $sourceUrl = "https://ja.wikipedia.org/wiki/".$row["name"]."駅";
-        }
-        array_push($stack, 
-            ['name' => $row["name"],
-             'kanaName' => $row["kana_name"],
-             'prefectureName' => $row["prefectureName"], 
-             'lineName1' => $row["lineName"], 
-             'lineName2' => $row["lineName2"], 
-             'lineName3' => $row["lineName3"],
-             'lineName4' => $row["lineName4"],
-             'lineName5' => $row["lineName5"], 
-             'lineName6' => $row["lineName6"], 
-             'lineName7' => $row["lineName7"], 
-             'lineName8' => $row["lineName8"], 
-             'lineName9' => $row["lineName9"],
-             'lat' => $row["lat"], 
-             'lng' => $row["lng"],
-             'passenger' => $row["passenger"],
-             'passengerRemarks' => $row["remarks"], 
-             'passengerYear' => $row["year"],
-             'sourceUrl' => $sourceUrl 
-            ]
-        );
-    }
-
-    //結果セットを解放
-    $select->free();
-
-    // データベース切断
-    $mysqli->close();
-
-    $result = [
-        'result' => 'success',
-        'stationData' => $stack
-    ];
+    echo json_encode($stmt->fetchAll(), JSON_UNESCAPED_UNICODE);
 
 } catch (Exception $e) {
     $result = [
         'result' => 'failure',
         'message' => $e->getMessage()
     ];
+    // JSONで結果を返す
+    returnJson($result);
 }
-
-// JSONで結果を返す
-returnJson($result);
 
 ?>

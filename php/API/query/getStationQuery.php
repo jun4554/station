@@ -1,6 +1,6 @@
 <?php
 
-function getStationQuery($stationName, $patternMatch) {
+function getStationQuery($pattern_match) {
 
     $query = "SELECT 
                 name,
@@ -26,10 +26,10 @@ function getStationQuery($stationName, $patternMatch) {
                 sourceUrl
                 FROM station";
 
-    if($patternMatch == 1){
-        $query .= " WHERE (name = '$stationName' OR  kana_name = '$stationName')";
-    }elseif($patternMatch == 2){
-        $query .= " WHERE (name LIKE '%$stationName%' OR  kana_name LIKE '%$stationName%')";
+    if($pattern_match == 1){
+        $query .= " WHERE (name = :station_name OR kana_name = :station_name)";
+    }elseif($pattern_match == 2){
+        $query .= " WHERE (name LIKE :station_name OR kana_name LIKE :station_name)";
     }
     $query .= " AND showFlg = 1 ORDER BY kana_name, prefecture_id";
 
