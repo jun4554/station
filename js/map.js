@@ -32,7 +32,7 @@ var silverIcon = new LeafIcon({iconUrl: 'img/marker/Silver.png'});
 
 var markerLayer;
 
-window.onload = function(){
+window.onload = async function(){
 
     (adsbygoogle = window.adsbygoogle || []).push({});
 
@@ -91,10 +91,10 @@ window.onload = function(){
     });
 
     // 都道府県を取得
-    getPrefecture();
+    await getPrefecture();
 
     // 路線一覧取得
-    getLine();
+    await getLine();
 
     // 都道府県チェックボタン処理
     $(document).on('change', 'input[name^="prefectureCheckBox"]', function() {
@@ -191,8 +191,8 @@ window.onload = function(){
         }
     });
 
-    getLinePrefix();
-    setMarker();
+    await getLinePrefix();
+    await setMarker();
 
     map.on('move', function(e) {
         if (devFlg) {
