@@ -12,10 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
+      - name: Remove git directory
+        run: rm -rf .git
 
       - name: FTP Deploy to CoreServer
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
