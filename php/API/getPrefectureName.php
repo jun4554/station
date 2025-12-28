@@ -20,9 +20,6 @@ require "query/getPrefectureNameQuery.php";
 // パラメータの取得
 $prefecture_no = $_REQUEST['prefecture_no'];
 
-// 結果格納変数
-$result = [];
-
 try {
 
     // パラメータ検証
@@ -32,40 +29,31 @@ try {
         throw new Exception("不正な値が渡されました。都道府県番号は1~47の範囲で指定してください");
     }
 
-    // データベース接続
-    $mysqli = connectDB();
-    if ($mysqli == null) {
-        throw new Exception("データベースの接続に失敗しました");
+    // --- DB接続 ---
+    $pdo = connectDB();
+    if ($pdo === null) {
+        exit();
     }
 
-    // クエリ生成
-    $query = getPrefectureNameQuery($prefecture_no);
-
-    $select = $mysqli -> query($query);
-    //クエリ失敗
-    if(!$select) {
-        throw new Exception($mysqli->error);
+    $stmt = $pdo->prepare(getPrefectureNameQuery());
+    if ($stmt === false) {
+        throw new RuntimeException('getPrefectureName.php SQL prepare failed');
     }
 
-    $row = $select->fetch_array(MYSQLI_ASSOC);
+    $stmt->bindValue(':prefecture_id', $prefecture_no , PDO::PARAM_INT);
+    $stmt->execute();
+    if ($stmt === false) {
+        throw new  RuntimeException('getPrefectureName.php SQL execute failed');
+    }
 
-    $result = [
-        'result' => 'success',
-        'prefectureNo' => $prefecture_no,
-        'prefectureName' => $row["name"]
-    ];
-
-    // データベース切断
-    $mysqli->close();
+    echo json_encode($stmt->fetchAll(), JSON_UNESCAPED_UNICODE);
 
 } catch (Exception $e) {
     $result = [
         'result' => 'failure',
         'message' => $e->getMessage()
     ];
+    returnJson($result);
 }
-
-// JSONで結果を返す
-returnJson($result);
 
 ?>
