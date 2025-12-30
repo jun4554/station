@@ -23,7 +23,10 @@ function getStationQuery($pattern_match) {
                 END AS passenger,
                 remarks,
                 year,
-                sourceUrl
+                CASE
+                    WHEN sourceUrl IS NULL OR sourceUrl = '' THEN CONCAT('https://ja.wikipedia.org/wiki/', station.name, '駅')
+                    ELSE sourceUrl
+                END AS sourceUrl
                 FROM station";
 
     if($pattern_match == 1){
