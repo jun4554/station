@@ -215,7 +215,7 @@ button.link-style-btn:hover {
   padding: 1rem;
 }
 
-/* #main セクションのモダンなスタイル */
+/* #main セクションのスタイル */
 #main .main-content {
     padding: 20px 0;
 }
@@ -338,7 +338,7 @@ button.link-style-btn:hover {
     color: #555;
 }
 
-/* #search セクションのモダンなスタイル */
+/* #search セクションのスタイル */
 #search h3 {
     font-size: 16px;
     font-weight: 600;
@@ -402,7 +402,7 @@ button.link-style-btn:hover {
     border-radius: 4px;
 }
 
-/* #filter セクションのモダンなスタイル */
+/* #filter セクションのスタイル */
 #filter {
     padding: 20px 0;
 }
@@ -598,7 +598,7 @@ button.link-style-btn:hover {
     margin: 8px 0;
 }
 
-/* モダンなチェックボックススタイル */
+/* チェックボックススタイル */
 #filter input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
