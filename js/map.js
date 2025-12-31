@@ -138,7 +138,7 @@ window.onload = async function(){
         step: 1000,
         scale: [0,150000,300000,450000,600000],
         format: '%s 人',
-        width: 250,
+        width: 300,
         theme: 'theme-blue',
         showLabels: true,
         isRange : true,
@@ -242,12 +242,6 @@ function getPrefecture() {
 
             prefectureArray = JSON.parse(request.responseText);
 
-            var newLineCharCnt = 28;
-            if ($(window).width() < SMART_PHONE_MAX_WIDTH) {
-                newLineCharCnt = 19;
-            }
-
-            var charCnt = 0;
             var preRegionName = "";
             for (var i = 0; i < prefectureArray.length; i++) {
                 var prefectureId = prefectureArray[i].prefecture_id;
@@ -256,14 +250,8 @@ function getPrefecture() {
                 if (preRegionName != regionName) {
                     $('#prefectureList').append('<p><strong>' + regionName + '</strong></p>');
                     preRegionName = regionName;
-                    charCnt = 0;
                 }
                 var elements = '<input type="checkbox" name="prefectureCheckBox" value="' + prefectureId + '">' + prefectureName;
-                charCnt += prefectureName.length + 1; //+1はチェックボックス分
-                if (charCnt > newLineCharCnt) {
-                    elements = '<br>' + elements;
-                    charCnt = prefectureName.length + 1;
-                }
                 $('#prefectureList').append($('<label class="prefectureListName" />').append(elements));
             }
         }
@@ -283,14 +271,8 @@ function getLine() {
  
             var genericTermArray = [];
 
-            var newLineCharCnt = 28;
-            if ($(window).width() < SMART_PHONE_MAX_WIDTH) {
-                newLineCharCnt = 19;
-            }
-
             ret = JSON.parse(request.responseText);
 
-            var charCnt = 0;
             var otherPrefectureId;
             for (var i = 0; i < ret.length; i++) {
                 var lineId = ret[i].id;
@@ -299,25 +281,17 @@ function getLine() {
                 var genericTermName = ret[i].genericTermName;
                 var prefix = ret[i].prefix;
                 if (!genericTermArray.includes(genericTermId)) {
-                    if (i != 0) $('#lineList').append('<hr>');
-                    $('#lineList').append('<p><label><input type="checkbox" name="allCheckBox' + genericTermId + '" value="' + genericTermId + '"><strong>' + genericTermName + '</strong></label></p>' );
+                    if (i != 0) $('#lineList').append('<div class="term-divider"></div>');
+                    $('#lineList').append('<p class="all-checkbox-wrapper"><label class="all-checkbox-label"><input type="checkbox" name="allCheckBox' + genericTermId + '" value="' + genericTermId + '"><strong>' + genericTermName + '</strong></label></p>' );
+                    $('#lineList').append('<div class="line-break"></div>');
                     genericTermArray.push(genericTermId);
-                    charCnt = 0;
                 }
                 var elements = '<input type="checkbox" name="lineCheckBox' + genericTermId + '" value="' + lineId + '">' + lineName.replace(prefix, "");
-                if (genericTermId != '90000') {
-                    charCnt += lineName.replace(prefix, "").length + 1; //+1はチェックボックス分
-                    if (charCnt > newLineCharCnt) {
-                        elements = '<br>' + elements;
-                        charCnt = lineName.replace(prefix, "").length + 1;
-                    }
-                } else {
+                if (genericTermId == '90000') {
                     if (otherPrefectureId != lineId.substr(1, 2)){
                         otherPrefectureId = lineId.substr(1, 2);
                         var prefecture = prefectureArray.filter(e => e.prefecture_id === parseInt(otherPrefectureId, 10))[0];
-                        elements = '<strong>' + prefecture.name + '</strong><br>' + elements + '<br>';
-                    } else {
-                        elements += '<br>';
+                        $('#lineList').append('<p><strong>' + prefecture.name + '</strong></p>');
                     }
                 }
                 $('#lineList').append($('<label class="lineListName" />').append(elements));

@@ -166,70 +166,6 @@ td { vertical-align: middle;  /* 中央揃え */}
     font-size: small;
 }
 
-/* #search セクションのスタイル */
-#search h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 20px 0 16px 0;
-    color: #333;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #0074d9;
-}
-
-#search #searchText {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 14px;
-    color: #2c3e50;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease;
-}
-
-#search #searchText:focus {
-    outline: none;
-    border-color: #0074d9;
-    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
-}
-
-#search #searchStationList {
-    margin-top: 16px;
-}
-
-#search #searchStationList p {
-    margin: 0 0 4px 0;
-}
-
-#search button.link-style-btn {
-    width: 100%;
-    padding: 10px 12px;
-    text-align: left;
-    font-size: 13px;
-    color: #2c3e50;
-    letter-spacing: 0.3px;
-    line-height: 1.5;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-#search button.link-style-btn:hover {
-    background-color: #f8f9fa;
-    text-decoration: none;
-    color: #2c3e50;
-}
-
-#search #searchError {
-    display: none;
-    color: #FF0000;
-    font-size: 13px;
-    margin-top: 12px;
-    padding: 8px 12px;
-    background-color: #fff5f5;
-    border-left: 3px solid #FF0000;
-    border-radius: 4px;
-}
-
 button.link-style-btn {
     cursor: pointer;
     border: none;
@@ -279,7 +215,7 @@ button.link-style-btn:hover {
   padding: 1rem;
 }
 
-/* #main セクションのスタイル */
+/* #main セクションのモダンなスタイル */
 #main .main-content {
     padding: 20px 0;
 }
@@ -330,7 +266,6 @@ button.link-style-btn:hover {
     height: 24px;
     margin-right: 16px;
     flex-shrink: 0;
-    border-radius: 4px;
     position: relative;
 }
 
@@ -403,6 +338,413 @@ button.link-style-btn:hover {
     color: #555;
 }
 
+/* #search セクションのモダンなスタイル */
+#search h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 16px 0;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0074d9;
+}
+
+#search #searchText {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #2c3e50;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#search #searchText:focus {
+    outline: none;
+    border-color: #0074d9;
+    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
+}
+
+#search #searchStationList {
+    margin-top: 16px;
+}
+
+#search #searchStationList p {
+    margin: 0 0 4px 0;
+}
+
+#search button.link-style-btn {
+    width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 13px;
+    color: #2c3e50;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#search button.link-style-btn:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+#search #searchError {
+    display: none;
+    color: #FF0000;
+    font-size: 13px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background-color: #fff5f5;
+    border-left: 3px solid #FF0000;
+    border-radius: 4px;
+}
+
+/* #filter セクションのモダンなスタイル */
+#filter {
+    padding: 20px 0;
+}
+
+#filter .section.s_01 {
+    margin: 0;
+}
+
+#filter .accordion_one {
+    margin-bottom: 0;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+    border-top: none;
+    background-color: #ffffff;
+    box-shadow: none;
+    transition: box-shadow 0.2s ease;
+}
+
+#filter .accordion_one:first-child {
+    border-top: 1px solid #e9ecef;
+    border-radius: 8px 8px 0 0;
+}
+
+#filter .accordion_one:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+#filter .accordion_one:only-child {
+    border-radius: 8px;
+}
+
+#filter .accordion_one:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#filter .accordion_header {
+    background-color: #ffffff !important;
+    color: #333 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 14px 16px !important;
+    text-align: left !important;
+    border-bottom: none !important;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#filter .accordion_header:hover {
+    background-color: #f8f9fa !important;
+    opacity: 1 !important;
+}
+
+#filter .accordion_header.open {
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+#filter .accordion_header .i_box {
+    right: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: -10px !important;
+    border: none !important;
+    border-radius: 4px;
+    background-color: transparent;
+    transform: rotate(0deg) !important;
+}
+
+#filter .accordion_header .i_box .one_i {
+    transform: rotate(0deg) !important;
+}
+
+#filter .accordion_header .i_box .one_i:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 12px;
+    height: 2px;
+    background-color: #0074d9;
+    border-radius: 1px;
+    transition: all 0.2s ease;
+}
+
+#filter .accordion_header .i_box .one_i:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    width: 12px;
+    height: 2px;
+    background-color: #0074d9;
+    border-radius: 1px;
+    transition: all 0.2s ease;
+}
+
+#filter .accordion_header.open .i_box {
+    background-color: transparent;
+    transform: rotate(0deg) !important;
+}
+
+#filter .accordion_header.open .i_box .one_i {
+    transform: rotate(0deg) !important;
+}
+
+#filter .accordion_header.open .i_box .one_i:before {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+}
+
+#filter .accordion_header.open .i_box .one_i:after {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+#filter .accordion_inner {
+    padding: 16px !important;
+    background-color: #ffffff;
+}
+
+#filter .accordion_inner .box_one {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#filter .accordion_inner p.txt_a_ac {
+    margin: 0;
+}
+
+#filter #prefectureList,
+#filter #lineList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+}
+
+#filter .prefectureListName,
+#filter .lineListName {
+    font-size: 13px;
+    color: #2c3e50;
+    letter-spacing: 0.3px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#filter .accordion_inner label {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#filter .accordion_inner p {
+    margin: 4px 0;
+    width: 100%;
+}
+
+#filter .accordion_inner p.all-checkbox-wrapper {
+    width: auto;
+    display: inline-block;
+    margin: 8px 0;
+}
+
+#filter .accordion_inner p.all-checkbox-wrapper strong {
+    display: inline;
+    margin-left: 6px;
+}
+
+#filter .accordion_inner p.all-checkbox-wrapper label.all-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+#filter .accordion_inner p.all-checkbox-wrapper label.all-checkbox-label input[type="checkbox"] {
+    margin: 0 6px 0 0;
+}
+
+#filter #lineList .line-break {
+    width: 100%;
+    height: 0;
+    margin: 0;
+}
+
+#filter #lineList .term-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 8px 0;
+}
+
+/* モダンなチェックボックススタイル */
+#filter input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #666;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    margin: 0 6px 0 0;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+#filter input[type="checkbox"]:hover {
+    border-color: #333;
+    background-color: #f5f5f5;
+}
+
+#filter input[type="checkbox"]:checked {
+    background-color: #ffffff;
+    border-color: #333;
+}
+
+#filter input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid #333;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#filter input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+#filter .passengerText {
+    font-size: 14px;
+    color: #2c3e50;
+    padding: 8px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    transition: border-color 0.2s ease;
+}
+
+#filter .passengerText:focus {
+    outline: none;
+    border-color: #0074d9;
+    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
+}
+
+#filter .unit {
+    font-size: 13px;
+    color: #2c3e50;
+    margin: 0 8px;
+}
+
+/* スライドバーのスタイル */
+#filter .slider-container {
+    width: 300px !important;
+    margin: 20px 0 30px 0 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    padding: 0 !important;
+}
+
+#filter .slider-container .back-bar {
+    height: 12px !important;
+    background-color: #e0e0e0 !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#filter .slider-container .back-bar .selected-bar {
+    background-color: #333 !important;
+    border-radius: 6px !important;
+}
+
+#filter .slider-container .back-bar .pointer {
+    width: 22px !important;
+    height: 22px !important;
+    top: -5px !important;
+    margin-left: -11px !important;
+    border-radius: 50% !important;
+    background-color: #333 !important;
+    border: 3px solid #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.2s ease !important;
+}
+
+#filter .slider-container .back-bar .pointer:hover {
+    transform: scale(1.15) !important;
+}
+
+#filter .slider-container .back-bar .pointer-label {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+    padding: 4px 8px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+    top: -35px !important;
+}
+
+#filter .slider-container .scale {
+    margin-top: 12px !important;
+}
+
+#filter .slider-container .scale {
+    overflow: visible !important;
+    width: 100% !important;
+    position: relative !important;
+    margin-top: 12px !important;
+}
+
+#filter .slider-container .scale span {
+    font-size: 12px !important;
+    color: #666 !important;
+    font-weight: 500 !important;
+    width: 1px !important;
+}
+
+#filter .slider-container .scale ins {
+    white-space: nowrap !important;
+    font-size: 12px !important;
+    color: #666 !important;
+    font-weight: 500 !important;
+    transform: translateX(-50%) !important;
+}
+
+#filter .slider-container .scale ins:last-child {
+    transform: translateX(-100%) !important;
+}
+
 @media (max-width: 768px) {
     #main .main-content {
         padding: 16px 0;
@@ -424,5 +766,18 @@ button.link-style-btn:hover {
     
     #main .info-card {
         padding: 12px 14px;
+    }
+    
+    #filter {
+        padding: 16px 0;
+    }
+    
+    #filter .accordion_header {
+        padding: 12px 14px !important;
+        font-size: 15px !important;
+    }
+    
+    #filter .accordion_inner {
+        padding: 12px !important;
     }
 }
