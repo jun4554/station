@@ -102,11 +102,20 @@
   border-bottom: 2px solid #1c85d8;*/
 }
 .s_01 .accordion_one .accordion_inner .box_one {
-  @media (min-width: 768px) {
-    height: 10360px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .s_01 .accordion_one .accordion_inner .box_one {
+    max-height: 500px;
   }
-  @media (max-width: 768px) {
-    height: 15360px;
+}
+
+@media (max-width: 767px) {
+  .s_01 .accordion_one .accordion_inner .box_one {
+    max-height: 350px;
   }
 }
 .s_01 .accordion_one .accordion_inner p.txt_a_ac {
