@@ -30,35 +30,41 @@
     <script src="js/map.js"></script>
 </head>
 <body>
-    <div id="header">
-        <img id="title" src="img/title.png" alt="全国駅マップ" />
-        <!-- 全国駅マップ広告 -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:350px;height:50px"
-             data-ad-client="ca-pub-4248082385618462"
-             data-ad-slot="8566489842">
-        </ins>
-        <table id="mark" height=40>
-            <tr>
-                <td style="background-color: #800080; width:20px;"></td>
-                <td>30万人<br>以上</td>
-                <td style="background-color: #FF0000; width:20px;"></td>
-                <td>10万人<br>以上</td>
-                <td style="background-color: #734E30; width:20px;"></td>
-                <td>5万人<br>以上</td>
-                <td style="background-color: #FFE500; width:20px;"></td>
-                <td>3万人<br>以上</td>
-                <td style="background-color: #4BB661; width:20px;"></td>
-                <td>1万人<br>以上</td>
-                <td style="background-color: #1869F0; width:20px;"></td>
-                <td>5千人<br>以上</td>
-                <td style="background-color: #A4C5F9; width:20px;"></td>
-                <td>1千人<br>以上</td>
-                <td style="background-color: #dcdcdc; width:20px;"></td>
-                <td>1千人<br>未満</td>
-            </tr>
-        </table>
-    </div>
+    <header id="header">
+        <div class="header-left">
+            <img id="title" src="img/title.png" alt="全国駅マップ" />
+        </div>
+        <div class="header-center">
+            <!-- 全国駅マップ広告 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:350px;height:50px"
+                 data-ad-client="ca-pub-4248082385618462"
+                 data-ad-slot="8566489842">
+            </ins>
+        </div>
+        <div class="header-right">
+            <table id="mark" height="40">
+                <tr>
+                    <td style="background-color: #800080; width:20px;"></td>
+                    <td>30万人<br>以上</td>
+                    <td style="background-color: #FF0000; width:20px;"></td>
+                    <td>10万人<br>以上</td>
+                    <td style="background-color: #734E30; width:20px;"></td>
+                    <td>5万人<br>以上</td>
+                    <td style="background-color: #FFE500; width:20px;"></td>
+                    <td>3万人<br>以上</td>
+                    <td style="background-color: #4BB661; width:20px;"></td>
+                    <td>1万人<br>以上</td>
+                    <td style="background-color: #1869F0; width:20px;"></td>
+                    <td>5千人<br>以上</td>
+                    <td style="background-color: #A4C5F9; width:20px;"></td>
+                    <td>1千人<br>以上</td>
+                    <td style="background-color: #dcdcdc; width:20px;"></td>
+                    <td>1千人<br>未満</td>
+                </tr>
+            </table>
+        </div>
+    </header>
     <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
@@ -80,46 +86,55 @@
                     全国駅マップ
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
-                <h3>色別乗降客数（1日あたり）</h3>
-                <table>
-                    <tr>
-                       <td style="background-color: #800080; width:40px;"></td>
-                       <td>30万人以上</td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: #FF0000; width:40px;"></td>
-                        <td>10万人以上</td>
-                   </tr>
-                   <tr>
-                        <td style="background-color: #734E30; width:40px;"></td>
-                        <td>5万人以上</td>
-                   </tr>
-                   <tr>
-                       <td style="background-color: #FFE500; width:40px;"></td>
-                       <td>3万人以上</td>
-                   </tr>
-                   <tr>
-                       <td style="background-color: #4BB661; width:40px;"></td>
-                       <td>1万人以上</td>
-                   </tr>
-                   <tr>
-                       <td style="background-color: #1869F0; width:40px;"></td>
-                       <td>5千人以上</td>
-                   </tr>
-                   <tr>
-                       <td style="background-color: #A4C5F9; width:40px;"></td>
-                       <td>1千人以上</td>
-                   </tr>
-                   <tr>
-                       <td style="background-color: #dcdcdc; width:40px;"></td>
-                       <td>1千人未満</td>
-                   </tr>
-                </table>
-                <p class="outline">
-                    乗降客数が公開されていない駅を非表示にしたい場合は、設定で「表示する」のチェックを外してください。
-                </p>
-                <h4>乗降客数データについて</h4>
-                    <p class="outline">本サイトで表示している各駅の乗降客数データは、Wikipedia日本語版（https://ja.wikipedia.org/）の各駅記事に掲載されている情報を基に作成しています。<br>Wikipediaのコンテンツは、Creative Commons 表示–継承 4.0 国際（CC BY-SA 4.0）および GNU Free Documentation License（GFDL）の下で提供されています。</p>
+                <div class="main-content">
+                    <div class="legend-section">
+                        <h3 class="section-title">色別乗降客数（1日あたり）</h3>
+                        <div class="legend-grid">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #800080;"></div>
+                                <span class="legend-text">30万人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FF0000;"></div>
+                                <span class="legend-text">10万人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #734E30;"></div>
+                                <span class="legend-text">5万人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #FFE500;"></div>
+                                <span class="legend-text">3万人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #4BB661;"></div>
+                                <span class="legend-text">1万人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #1869F0;"></div>
+                                <span class="legend-text">5千人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #A4C5F9;"></div>
+                                <span class="legend-text">1千人以上</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #dcdcdc;"></div>
+                                <span class="legend-text">1千人未満</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <p class="info-text">
+                            <i class="fa fa-info-circle"></i>
+                            乗降客数が公開されていない駅を非表示にしたい場合は、設定で「表示する」のチェックを外してください。
+                        </p>
+                    </div>
+                    <div class="data-section">
+                        <h4 class="data-title">乗降客数データについて</h4>
+                        <p class="data-text">本サイトで表示している各駅の乗降客数データは、Wikipedia日本語版（https://ja.wikipedia.org/）の各駅記事に掲載されている情報を基に作成しています。<br>Wikipediaのコンテンツは、Creative Commons 表示–継承 4.0 国際（CC BY-SA 4.0）および GNU Free Documentation License（GFDL）の下で提供されています。</p>
+                    </div>
+                </div>
             </div>
             <!-- Search Tab -->
             <div class="sidebar-pane" id="search">

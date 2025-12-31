@@ -12,6 +12,12 @@ html, body {
 
 @media (max-width: 768px) {
     #title, #mark {display: none;}
+    .header-left, .header-right {display: none;}
+    #header {
+        padding: 8px 12px;
+        height: 50px;
+        justify-content: center;
+    }
     #mapid {width: 100%;height: calc(100% - 50px);}
     #dialog{
         display: none;
@@ -27,6 +33,13 @@ html, body {
     }
 }
 @media (min-width: 768px) {
+    #header {
+        padding: 8px 24px;
+        height: 50px;
+    }
+    .header-center {
+        margin: 0 auto;
+    }
     #mapid {width: 100%;height: 94%;}
     #dialog{
         display: none;
@@ -46,6 +59,104 @@ td { vertical-align: middle;  /* 中央揃え */}
 #header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 1000;
+    height: 50px;
+    box-sizing: border-box;
+    gap: 16px;
+    transition: box-shadow 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#title {
+    height: auto;
+    max-height: 40px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+#title:hover {
+    transform: scale(1.02);
+}
+
+#mark {
+    height: 40px;
+    border-collapse: collapse;
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+#mark:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+#mark tr td {
+    padding: 4px 8px;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#mark tr td[style*="background-color"] {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+}
+
+#mark tr td[style*="background-color"]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: -1;
+}
+
+#mark tr td:not([style*="background-color"]) {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+    padding: 0 4px;
+}
+
+.adsbygoogle {
+    margin: 0 16px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* スライドバーコンテンツ */
@@ -102,4 +213,152 @@ button.link-style-btn:hover {
   border-bottom: 1px solid #5200b7;
   color: #222;
   padding: 1rem;
+}
+
+/* #main セクションのモダンなスタイル */
+#main .main-content {
+    padding: 20px 0;
+}
+
+#main .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0074d9;
+}
+
+#main .legend-section {
+    margin-bottom: 24px;
+}
+
+#main .legend-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin-top: 12px;
+}
+
+#main .legend-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+}
+
+#main .legend-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+}
+
+#main .legend-item:last-child::after {
+    display: none;
+}
+
+#main .legend-color {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    position: relative;
+}
+
+#main .legend-color::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: -1;
+}
+
+#main .legend-text {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+#main .info-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 14px 16px;
+    margin: 20px 0;
+}
+
+#main .info-text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+#main .info-text i {
+    color: #0074d9;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+#main .data-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-top: 24px;
+    padding: 16px;
+}
+
+#main .data-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#main .data-text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    #main .main-content {
+        padding: 16px 0;
+    }
+    
+    #main .legend-item {
+        padding: 6px 0;
+    }
+    
+    #main .legend-color {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+    }
+    
+    #main .legend-text {
+        font-size: 13px;
+    }
+    
+    #main .info-card {
+        padding: 12px 14px;
+    }
 }
