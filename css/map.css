@@ -166,6 +166,70 @@ td { vertical-align: middle;  /* 中央揃え */}
     font-size: small;
 }
 
+/* #search セクションのスタイル */
+#search h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 16px 0;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0074d9;
+}
+
+#search #searchText {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #2c3e50;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+#search #searchText:focus {
+    outline: none;
+    border-color: #0074d9;
+    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
+}
+
+#search #searchStationList {
+    margin-top: 16px;
+}
+
+#search #searchStationList p {
+    margin: 0 0 4px 0;
+}
+
+#search button.link-style-btn {
+    width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 13px;
+    color: #2c3e50;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#search button.link-style-btn:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+#search #searchError {
+    display: none;
+    color: #FF0000;
+    font-size: 13px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    background-color: #fff5f5;
+    border-left: 3px solid #FF0000;
+    border-radius: 4px;
+}
+
 button.link-style-btn {
     cursor: pointer;
     border: none;
@@ -215,7 +279,7 @@ button.link-style-btn:hover {
   padding: 1rem;
 }
 
-/* #main セクションのモダンなスタイル */
+/* #main セクションのスタイル */
 #main .main-content {
     padding: 20px 0;
 }
