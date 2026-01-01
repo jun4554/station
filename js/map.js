@@ -157,12 +157,13 @@ window.onload = async function(){
         setMarker();
     });
 
-    // ウィンドウリサイズ時に選択中の都道府県表示を更新
+    // ウィンドウリサイズ時に選択中の都道府県・路線表示を更新
     var resizeTimer;
     $(window).on('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
             updateSelectedPrefectureDisplay();
+            updateSelectedLineDisplay();
         }, 500);
     });
     
@@ -755,7 +756,80 @@ function afterLineCheck() {
     $('[name^="lineCheckBox"]:checked').each(function(index, element){
         lineIdArray.push($(element).val());
     });
+    updateSelectedLineDisplay();
     setMarker();
+}
+
+// 選択中の路線表示を更新
+function updateSelectedLineDisplay() {
+    var selectedLines = [];
+    $('[name^="lineCheckBox"]:checked').each(function(index, element){
+        // チェックボックスの次のテキストノードから路線名を取得
+        var lineName = $(element).parent().contents().not($(element)).text().trim();
+        if (lineName) {
+            selectedLines.push(lineName);
+        }
+    });
+    
+    var displayText = '';
+    if (selectedLines.length === 0) {
+        displayText = '';
+    } else {
+        var $displayElement = $('#selectedLineDisplay');
+        if ($displayElement.length === 0) {
+            return;
+        }
+        
+        var displayElement = $displayElement[0];
+        // 要素の実際の幅を強制的に再計算させる
+        displayElement.offsetWidth;
+        
+        // 要素のclientWidthを使用（paddingを含むがborderを含まない）
+        // scrollWidthはコンテンツの幅（padding/borderを含まない）なので、
+        // clientWidthと比較することで正しく判定できる
+        displayElement.offsetWidth; // レイアウトを強制的に再計算
+        var containerWidth = displayElement.clientWidth;
+        
+        var separator = '、';
+        var otherText = '、他';
+        
+        // すべて表示できるかチェック
+        var allText = selectedLines.join(separator);
+        $displayElement.text(allText);
+        displayElement.offsetWidth; // レイアウトを強制的に再計算
+        var allTextWidth = displayElement.scrollWidth;
+        
+        if (allTextWidth <= containerWidth) {
+            // すべて表示できる
+            displayText = allText;
+        } else {
+            // 表示できる数を探す（「他」を含む状態で）
+            var displayCount = 0;
+            for (var i = 1; i <= selectedLines.length; i++) {
+                var testText = selectedLines.slice(0, i).join(separator) + otherText;
+                $displayElement.text(testText);
+                // 要素の実際の幅を強制的に再計算させる
+                displayElement.offsetWidth;
+                var testWidth = displayElement.scrollWidth;
+                if (testWidth > containerWidth) {
+                    displayCount = i - 1;
+                    break;
+                }
+                displayCount = i;
+            }
+            
+            if (displayCount <= 0) {
+                displayText = otherText.replace('、', '');
+            } else if (displayCount >= selectedLines.length) {
+                // すべて表示できる場合は「他」を付けない
+                displayText = allText;
+            } else {
+                displayText = selectedLines.slice(0, displayCount).join(separator) + otherText;
+            }
+        }
+    }
+    
+    $('#selectedLineDisplay').text(displayText);
 }
 
 // 乗降客数スライド処理
