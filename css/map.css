@@ -184,6 +184,41 @@ button.link-style-btn:hover {
 #nonPublicCheckBoxLabel {font-size: small;}
 .outline {font-size: small;}
 .contactText {font-size: small;}
+
+/* #contact セクションのスタイル */
+#contact .contactText {
+    font-size: 14px;
+    color: #2c3e50;
+    line-height: 1.7;
+    margin: 20px 0;
+    padding: 0 20px;
+    letter-spacing: 0.3px;
+}
+
+#contact .contactText a {
+    color: #0074d9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+#contact .contactText a:hover {
+    color: #0056b3;
+    border-bottom-color: #0056b3;
+}
+
+#contact .contactText:first-of-type {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    #contact .contactText {
+        font-size: 13px;
+        padding: 0 20px;
+    }
+}
 .settingText {font-size: x-small;}
 
 /* ポップアップ */
