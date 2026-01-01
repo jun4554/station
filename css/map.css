@@ -402,6 +402,75 @@ button.link-style-btn:hover {
     border-radius: 4px;
 }
 
+/* #database セクションのスタイル */
+#database #list {
+    margin-top: 16px;
+}
+
+#database #list p {
+    margin: 0 0 8px 0;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2c3e50;
+    letter-spacing: 0.3px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#database #list p:hover {
+    background-color: #f8f9fa;
+}
+
+#database #list p.line-header {
+    margin-top: 16px;
+    margin-bottom: 12px;
+    padding: 0 12px 8px 12px;
+}
+
+#database #list p.line-header:first-child {
+    margin-top: 0;
+}
+
+#database #list p.line-header strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0074d9;
+}
+
+#database #list p.station-item {
+    padding-left: 24px;
+}
+
+#database #list p .lineListName {
+    font-size: 13px;
+    color: #666;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+#database #list p:not(.line-header):not(.station-item) {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px 12px;
+}
+
+@media (max-width: 768px) {
+    #database #list p {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    #database #list p.line-header strong {
+        font-size: 15px;
+    }
+}
+
 /* #filter セクションのスタイル */
 #filter {
     padding: 20px 0;

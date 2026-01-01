@@ -525,14 +525,14 @@ function setMarker() {
                 // 一覧
                 if (lineIdArray.length == 0 || lineIdArray.includes(station.lineId)) {
                     if (!lineNameArray.includes(station.lineName)) {
-                        $('#list').append('<p><strong>' + station.lineName + '</strong></p>');
+                        $('#list').append('<p class="line-header"><strong>' + station.lineName + '</strong></p>');
                         lineNameArray.push(station.lineName);
                     }
                     var elements;
                     if (station.KanaName != null) {
-                        elements = '<p>&emsp;<ruby>' + station.Name + "<rp>(</rp><rt>" + station.KanaName + "</rt><rp>)</rp></ruby>";
+                        elements = '<p class="station-item"><ruby>' + station.Name + "<rp>(</rp><rt>" + station.KanaName + "</rt><rp>)</rp></ruby>";
                     } else {
-                        elements = '<p>&emsp;' + station.Name;
+                        elements = '<p class="station-item">' + station.Name;
                     }
                     if (station.passenger != -1) {
                         elements += '&nbsp;<span class="lineListName">' + Number(station.passenger).toLocaleString() + '人/日</span>';
