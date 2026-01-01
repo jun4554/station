@@ -10,12 +10,12 @@
   @media (min-width: 768px) {
     .sidebar {
       top: 50px;
-      bottom: 15px;
+      bottom: 25px;
       transition: width 500ms; } }
   @media (max-width: 768px) {
     .sidebar {
       top: 50px;
-      bottom: 15px;
+      bottom: 25px;
       transition: width 500ms; } }
   @media (min-width: 768px) and (max-width: 991px) {
     .sidebar {

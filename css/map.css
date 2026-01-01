@@ -10,6 +10,18 @@ html, body {
     z-index: 0;
 }
 
+/* Leaflet attribution (ライセンス表示) を常に表示 */
+.leaflet-control-attribution {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    z-index: 1001 !important;
+    font-size: 11px !important;
+    padding: 2px 5px !important;
+    margin: 0 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 @media (max-width: 768px) {
     #title, #mark {display: none;}
     .header-left, .header-right {display: none;}
@@ -40,7 +52,7 @@ html, body {
     .header-center {
         margin: 0 auto;
     }
-    #mapid {width: 100%;height: 94%;}
+    #mapid {width: 100%;height: calc(100% - 50px);}
     #dialog{
         display: none;
         text-align: center;
