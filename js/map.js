@@ -701,10 +701,11 @@ function updateSelectedPrefectureDisplay() {
         // 要素の実際の幅を強制的に再計算させる
         displayElement.offsetWidth;
         
-        // マージン（左右各20px = 40px）を考慮して、要素が使える幅を計算
-        // scrollWidthはpadding/borderを含まないので、containerWidthからpaddingとborderを引く必要がある
-        // padding: 左右各14px = 28px, border: 左右各2px = 4px
-        var containerWidth = parentWidth - 40 - 28 - 4;
+        // 要素のclientWidthを使用（paddingを含むがborderを含まない）
+        // scrollWidthはコンテンツの幅（padding/borderを含まない）なので、
+        // clientWidthと比較することで正しく判定できる
+        displayElement.offsetWidth; // レイアウトを強制的に再計算
+        var containerWidth = displayElement.clientWidth;
         
         var separator = '、';
         var otherText = '、他';
