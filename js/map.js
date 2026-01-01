@@ -157,6 +157,15 @@ window.onload = async function(){
         setMarker();
     });
 
+    // ウィンドウリサイズ時に選択中の都道府県表示を更新
+    var resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            updateSelectedPrefectureDisplay();
+        }, 500);
+    });
+    
     // 現在地ボタン表示
     L.Control.CurrentMark = L.Control.extend({
         onAdd: function(map) {
@@ -650,7 +659,93 @@ function afterPrefectureCheck() {
     $('[name^="prefectureCheckBox"]:checked').each(function(index, element){
         prefectureIdArray.push($(element).val());
     });
+    updateSelectedPrefectureDisplay();
     setMarker();
+}
+
+// 選択中の都道府県表示を更新
+function updateSelectedPrefectureDisplay() {
+    var selectedPrefectures = [];
+    $('[name^="prefectureCheckBox"]:checked').each(function(index, element){
+        var prefectureId = $(element).val();
+        var prefecture = prefectureArray.filter(e => e.prefecture_id == prefectureId)[0];
+        if (prefecture) {
+            selectedPrefectures.push(prefecture.name);
+        }
+    });
+    
+    var displayText = '';
+    if (selectedPrefectures.length === 0) {
+        displayText = '';
+    } else {
+        var $displayElement = $('#selectedPrefectureDisplay');
+        if ($displayElement.length === 0) {
+            return;
+        }
+        
+        // 親要素（accordion_inner）の幅を取得
+        var $parent = $displayElement.parent();
+        var parentElement = $parent[0];
+        if (!parentElement) {
+            return;
+        }
+        // レイアウトを強制的に再計算させる
+        parentElement.offsetWidth;
+        var parentWidth = parentElement.offsetWidth;
+        if (parentWidth === 0) {
+            // 親要素の幅が取得できない場合（非表示など）は処理をスキップ
+            return;
+        }
+        
+        var displayElement = $displayElement[0];
+        // 要素の実際の幅を強制的に再計算させる
+        displayElement.offsetWidth;
+        
+        // マージン（左右各20px = 40px）を考慮して、要素が使える幅を計算
+        // scrollWidthはpadding/borderを含まないので、containerWidthからpaddingとborderを引く必要がある
+        // padding: 左右各14px = 28px, border: 左右各2px = 4px
+        var containerWidth = parentWidth - 40 - 28 - 4;
+        
+        var separator = '、';
+        var otherText = '、他';
+        
+        // すべて表示できるかチェック
+        var allText = selectedPrefectures.join(separator);
+        $displayElement.text(allText);
+        displayElement.offsetWidth; // レイアウトを強制的に再計算
+        var allTextWidth = displayElement.scrollWidth;
+        
+        if (allTextWidth <= containerWidth) {
+            // すべて表示できる
+            displayText = allText;
+        } else {
+            // 表示できる数を探す（「他」を含む状態で）
+            var displayCount = 0;
+            for (var i = 1; i <= selectedPrefectures.length; i++) {
+                var testText = selectedPrefectures.slice(0, i).join(separator) + otherText;
+                $displayElement.text(testText);
+                // 要素の実際の幅を強制的に再計算させる
+                displayElement.offsetWidth;
+                var testWidth = displayElement.scrollWidth;
+                if (testWidth > containerWidth) {
+                    displayCount = i - 1;
+                    break;
+                }
+                displayCount = i;
+            }
+            
+            if (displayCount <= 0) {
+                displayText = otherText.replace('、', '');
+            } else if (displayCount >= selectedPrefectures.length) {
+                // すべて表示できる場合は「他」を付けない
+                displayText = allText;
+            } else {
+                displayText = selectedPrefectures.slice(0, displayCount).join(separator) + otherText;
+            }
+        }
+    }
+    
+    $('#selectedPrefectureDisplay').text(displayText);
 }
 
 // 路線名チェック後処理

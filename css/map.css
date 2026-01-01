@@ -832,6 +832,29 @@ button.link-style-btn:hover {
     white-space: nowrap;
 }
 
+#filter .selected-prefecture-display {
+    margin: 0 20px 12px 20px;
+    padding: 10px 14px;
+    background-color: #e3f2fd;
+    border: 2px solid #0074d9;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0066cc;
+    min-height: 20px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 116, 217, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#filter .selected-prefecture-display::before {
+    content: '✓ ';
+    font-weight: bold;
+    color: #0074d9;
+    margin-right: 4px;
+}
+
 #filter .accordion_inner label {
     display: inline-block;
     white-space: nowrap;
