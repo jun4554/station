@@ -1,0 +1,4 @@
+# /station/ にアクセスしたら /station/map.html にリダイレクト
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/station/?$
+RewriteRule ^$ map.html [R=301,L]
