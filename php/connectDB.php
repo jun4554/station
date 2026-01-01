@@ -2,7 +2,7 @@
 
 function connectDB() {
 
-    $config = require __DIR__ . '/../../config.php';
+    $config = require __DIR__ . '/config.php';
 
     try {
         return new PDO(

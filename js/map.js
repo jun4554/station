@@ -242,7 +242,7 @@ window.onload = async function(){
 // 都道府県を取得
 function getPrefecture() {
     var request = new XMLHttpRequest();
-    var url = 'https://ji-develop.com/station/old/php/getPrefecture.php';
+    var url = 'https://ji-develop.com/station/php/getPrefecture.php';
     request.open('GET', url, true);
     request.send();
  
@@ -271,7 +271,7 @@ function getPrefecture() {
 // 絞込み用の路線を取得
 function getLine() {
     var request = new XMLHttpRequest();
-    var url = 'https://ji-develop.com/station/old/php/getLine.php';
+    var url = 'https://ji-develop.com/station/php/getLine.php';
     request.open('GET', url, true);
     request.send();
  
@@ -313,7 +313,7 @@ function getLine() {
 // 路線名の削除Prefixを取得
 function getLinePrefix() {
     var request = new XMLHttpRequest();
-    var url = 'https://ji-develop.com/station/old/php/getLinePrefix.php';
+    var url = 'https://ji-develop.com/station/php/getLinePrefix.php';
     request.open('GET', url, true);
     request.send();
  
@@ -340,7 +340,7 @@ function setMarker() {
 
     var request = new XMLHttpRequest();
     var url = [
-        'https://ji-develop.com/station/old/php/getStation.php',
+        'https://ji-develop.com/station/php/getStation.php',
         '?east=' + map.getBounds().getEast(),
         '&west=' + map.getBounds().getWest(),
         '&south=' + map.getBounds().getSouth(),
@@ -601,7 +601,7 @@ function search() {
     if (searchText == "") return;
     
     var request = new XMLHttpRequest();
-    var url = 'https://ji-develop.com/station/old/php/getLatLng.php?searchText=' + searchText;
+    var url = 'https://ji-develop.com/station/php/getLatLng.php?searchText=' + searchText;
     request.open('GET', url, true);
     isSearch = true;
     request.send();

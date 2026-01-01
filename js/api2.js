@@ -1,7 +1,7 @@
 window.onload = function(){
 
   var request = new XMLHttpRequest();
-    var url = 'https://ji-develop.com/station/old/php/API/getStation.php?station_name=東京&pattern_match=1';
+    var url = 'https://ji-develop.com/station/php/API/getStation.php?station_name=東京&pattern_match=1';
     request.open('GET', url, true);
     request.send();
  
