@@ -1,11 +1,32 @@
 <!DOCTYPE html>
+<html lang="ja">
 <head>
-    <title>全国駅マップ - 駅別乗降客数を地図で確認</title>
     <meta charset="utf-8"/>
-    <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。">
+    <meta name="keywords" content="全国駅マップ,全国駅地図,駅別乗降客数,駅,電車,乗降客数,乗員客数,地図,マップ">
+    
+    <!-- OGP (Open Graph Protocol) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="全国駅マップ - 駅別乗降客数を地図で確認">
+    <meta property="og:description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。">
+    <meta property="og:url" content="https://ji-develop.com/station/map.html">
+    <meta property="og:site_name" content="全国駅マップ">
+    <meta property="og:image" content="https://ji-develop.com/station/img/title.png">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="全国駅マップ - 駅別乗降客数を地図で確認">
+    <meta name="twitter:description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。">
+    <meta name="twitter:image" content="https://ji-develop.com/station/img/title.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ji-develop.com/station/map.html">
+    
+    <title>全国駅マップ - 駅別乗降客数を地図で確認</title>
     <link rel="icon" href="img/favicon.ico">
-    <meta name="keyword" content="全国駅マップ,全国駅地図,駅別乗降客数,駅,電車,乗降客数,乗員客数,地図,マップ">
     <!-- leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="crossorigin=""></script>
@@ -240,5 +261,30 @@
     <div id="mapid"></div>
     <!-- Display Over Dialog -->
     <div id="dialog">拡大してください</div>
+    
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "全国駅マップ",
+        "description": "全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。",
+        "url": "https://ji-develop.com/station/map.html",
+        "applicationCategory": "MapApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY"
+        },
+        "featureList": [
+            "駅検索",
+            "都道府県別絞り込み",
+            "路線別絞り込み",
+            "乗降客数別絞り込み",
+            "地図上での駅表示"
+        ]
+    }
+    </script>
 </body>
 </html>
