@@ -86,7 +86,9 @@
             </table>
         </div>
     </header>
-    <div id="sidebar" class="sidebar collapsed">
+    <main>
+        <h1 class="sr-only">全国駅マップ - 駅別乗降客数を地図で確認</h1>
+        <div id="sidebar" class="sidebar collapsed">
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
@@ -103,10 +105,10 @@
         <!-- Tab panes -->
         <div class="sidebar-content">
             <div class="sidebar-pane" id="main">
-                <h1 class="sidebar-header">
+                <h2 class="sidebar-header">
                     全国駅マップ
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
-                </h1>
+                </h2>
                 <div class="main-content">
                     <div class="legend-section">
                         <h3 class="section-title">色別乗降客数（1日あたり）</h3>
@@ -159,7 +161,7 @@
             </div>
             <!-- Search Tab -->
             <div class="sidebar-pane" id="search">
-                <h1 class="sidebar-header">検索<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h2 class="sidebar-header">検索<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
                 <h3>駅名</h3>
                 <p><input type="text" id="searchText" size="30" maxlength="20" inputmode="kana" style="ime-mode:active;"></p>
                 <div id="searchStationList"></div>
@@ -167,7 +169,7 @@
             </div>
             <!-- Filter Tab -->
             <div class="sidebar-pane" id="filter">
-                <h1 class="sidebar-header-filter">絞り込み<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h2 class="sidebar-header-filter">絞り込み<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
                 <div class="section s_01">
                     <div class="accordion_one">
                         <div class="accordion_header">都道府県<div class="i_box"><i class="one_i"></i></div>
@@ -209,18 +211,18 @@
             </div>
             <!-- Database Tab -->
             <div class="sidebar-pane" id="database">
-                <h1 class="sidebar-header">一覧<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h2 class="sidebar-header">一覧<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
                 <div id="list"></div>
             </div>
             <!-- Contact Tab -->
             <div class="sidebar-pane" id="contact">
-                <h1 class="sidebar-header">お問い合わせ<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h2 class="sidebar-header">お問い合わせ<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
                 <p class="contactText">このサイトに関する問い合わせは下記まで</p>
                 <p class="contactText"><a href="https://ji-develop.com/blog/お問い合わせ" target="_blank">お問い合わせ</a>
             </div>
             <!-- Setting Tab -->
             <div class="sidebar-pane" id="setting">
-                <h1 class="sidebar-header">設定<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                <h2 class="sidebar-header">設定<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
                 <h3>1度に表示する駅数</h3>
                 <p class="settingText">※表示数を増やすと処理に時間がかかります。</p>
                 <div>
@@ -257,10 +259,11 @@
                 <label id="nonPublicCheckBoxLabel"><input type="checkbox" id="nonPublicCheckBox" name="nonPublicCheckBox" checked>表示する</label>
             </div>
         </div>
-    </div>
-    <div id="mapid"></div>
-    <!-- Display Over Dialog -->
-    <div id="dialog">拡大してください</div>
+        </div>
+        <div id="mapid"></div>
+        <!-- Display Over Dialog -->
+        <div id="dialog">拡大してください</div>
+    </main>
     
     <!-- 構造化データ (JSON-LD) -->
     <script type="application/ld+json">
