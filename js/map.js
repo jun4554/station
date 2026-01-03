@@ -204,6 +204,11 @@ window.onload = async function(){
     await getLinePrefix();
     await setMarker();
 
+    // Leafletにmap描画サイズを再通知
+    setTimeout(function () {
+        map.invalidateSize();
+    }, 300);
+
     map.on('move', function(e) {
         if (devFlg) {
             crossMarker.setLatLng(map.getCenter());
