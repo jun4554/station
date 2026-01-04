@@ -170,12 +170,17 @@
             <!-- Filter Tab -->
             <div class="sidebar-pane" id="filter">
                 <h2 class="sidebar-header-filter">絞り込み<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h2>
+                <div class="filter-selection-display">
+                    <div class="filter-selection-title">現在の抽出条件</div>
+                    <div id="selectedPrefectureDisplay" class="filter-selection-item"></div>
+                    <div id="selectedLineDisplay" class="filter-selection-item"></div>
+                    <div id="selectedPassengerDisplay" class="filter-selection-item"></div>
+                </div>
                 <div class="section s_01">
                     <div class="accordion_one">
                         <div class="accordion_header">都道府県<div class="i_box"><i class="one_i"></i></div>
                         </div>
                         <div class="accordion_inner">
-                            <div id="selectedPrefectureDisplay" class="selected-prefecture-display"></div>
                             <div class="box_one">
                                 <p class="txt_a_ac"><div id="prefectureList"></div></p>
                             </div>
@@ -185,7 +190,6 @@
                         <div class="accordion_header">路線<div class="i_box"><i class="one_i"></i></div>
                         </div>
                         <div class="accordion_inner">
-                            <div id="selectedLineDisplay" class="selected-prefecture-display"></div>
                             <div class="box_one">
                                 <p class="txt_a_ac"><div id="lineList"></div></p>
                             </div>

@@ -151,6 +151,7 @@ window.onload = async function(){
     });
     $('#passengerTextFrom').val('0');
     $('#passengerTextTo').val('600000');
+    updateSelectedPassengerDisplay();
 
     // 非公表の駅も表示するチェック時処理
     $('[name="nonPublicCheckBox"]').change(function(){
@@ -164,6 +165,7 @@ window.onload = async function(){
         resizeTimer = setTimeout(function() {
             updateSelectedPrefectureDisplay();
             updateSelectedLineDisplay();
+            updateSelectedPassengerDisplay();
         }, 500);
     });
     
@@ -202,6 +204,9 @@ window.onload = async function(){
     });
 
     await getLinePrefix();
+    updateSelectedPrefectureDisplay();
+    updateSelectedLineDisplay();
+    updateSelectedPassengerDisplay();
     await setMarker();
 
     map.on('move', function(e) {
@@ -677,7 +682,7 @@ function updateSelectedPrefectureDisplay() {
     
     var displayText = '';
     if (selectedPrefectures.length === 0) {
-        displayText = '';
+        displayText = '都道府県：全て';
     } else {
         var $displayElement = $('#selectedPrefectureDisplay');
         if ($displayElement.length === 0) {
@@ -773,7 +778,7 @@ function updateSelectedLineDisplay() {
     
     var displayText = '';
     if (selectedLines.length === 0) {
-        displayText = '';
+        displayText = '路線：全て';
     } else {
         var $displayElement = $('#selectedLineDisplay');
         if ($displayElement.length === 0) {
@@ -832,11 +837,28 @@ function updateSelectedLineDisplay() {
     $('#selectedLineDisplay').text(displayText);
 }
 
+// 選択中の乗降客数表示を更新
+function updateSelectedPassengerDisplay() {
+    var passengerFrom = parseInt($('#passengerTextFrom').val()) || 0;
+    var passengerTo = parseInt($('#passengerTextTo').val()) || 600000;
+    
+    var displayText = '';
+    // デフォルト値（0〜600000）以外の場合のみ表示
+    //if (passengerFrom !== 0 || passengerTo !== 600000) {
+        const from = Number(passengerFrom);
+        const to = Number(passengerTo);
+        displayText = `乗降客数：${from.toLocaleString()}人〜${to.toLocaleString()}人`;
+    //}
+    
+    $('#selectedPassengerDisplay').text(displayText);
+}
+
 // 乗降客数スライド処理
 function sliderChange() {
     var rangeArray = $('#range-slider').val().split(',');
     $('#passengerTextFrom').val(rangeArray[0]);
     $('#passengerTextTo').val(rangeArray[1]);
+    updateSelectedPassengerDisplay();
     setMarker();
 }
 
@@ -846,5 +868,6 @@ function passengerTextChange() {
         return;
     }
     $('#range-slider').jRange('setValue', $('#passengerTextFrom').val() + "," + $('#passengerTextTo').val());
+    updateSelectedPassengerDisplay();
     setMarker();
 }
