@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。">
+    <meta name="keywords" content="全国駅マップ,全国駅地図,駅別乗降客数,駅,電車,乗降客数,乗員客数,地図,マップ">
+    
+    <!-- OGP (Open Graph Protocol) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="全国駅マップ｜日本全国の駅・乗降客数を地図で確認">
+    <meta property="og:description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。">
+    <meta property="og:url" content="https://ji-develop.com/station/">
+    <meta property="og:site_name" content="全国駅マップ">
+    <meta property="og:image" content="https://ji-develop.com/station/img/title.png">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="全国駅マップ - 駅別乗降客数を地図で確認">
+    <meta name="twitter:description" content="全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。">
+    <meta name="twitter:image" content="https://ji-develop.com/station/img/title.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ji-develop.com/station/">
+    
+    <title>全国駅マップ｜日本全国の鉄道駅と乗降客数を地図で可視化</title>
+    <link rel="icon" href="img/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/fontawesome/all.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header id="header">
+        <!-- 全国駅マップ広告 -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:350px;height:50px"
+             data-ad-client="ca-pub-4248082385618462"
+             data-ad-slot="85669849842">
+        </ins>
+    </header>
+    
+    <main id="content">
+        <div class="content-wrapper">
+            <h1>
+                <img src="img/title.png" alt="" />
+                <span class="visually-hidden">全国駅マップ</span>
+            </h1>
+            <h2>日本全国の鉄道駅・乗降客数を地図で検索</h2>
+            
+            <p class="lead">
+                全国駅マップは、日本全国の鉄道駅を地図上で一覧表示し、
+                駅ごとの1日あたり乗降客数を色分けで確認できる地図サービスです。<br />
+                都道府県・路線・乗降客数による絞り込み検索に対応しており、
+                鉄道利用状況や都市構造を直感的に把握できます。
+            </p>
+
+            <div class="cta-area">
+                <a href="map.html" class="cta-button">
+                    <i class="fas fa-map-marked-alt"></i>
+                    地図で全国の駅を見る
+                </a>
+            </div>
+
+            <img src="img/sample.png" alt="全国駅マップの画面例。駅別乗降客数を色分け表示した地図" class="sample-image" />
+
+            <section class="feature-section">
+                <h2><i class="fas fa-map"></i> 全国の鉄道駅を地図で一覧表示</h2>
+                <p>
+                    日本全国のJR・私鉄・地下鉄を含む鉄道駅を地図上に表示し、
+                    地域ごとの駅分布を一目で確認できます。<br />
+                    都市部と地方の駅密度の違いや、路線網の特徴も把握可能です。
+                </p>
+            </section>
+
+            <section class="feature-section">
+                <h2><i class="fas fa-palette"></i> 駅別の乗降客数を色分けで可視化</h2>
+                <p>
+                    各駅の1日あたり平均乗降客数をもとに、駅アイコンを色分け表示しています。<br />
+                    利用者の多い主要駅からローカル駅まで、乗降客数の規模感を視覚的に比較できます。
+                </p>
+                <div class="legend-preview">
+                    <div class="legend-grid">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #800080;"></div>
+                            <span class="legend-text">30万人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FF0000;"></div>
+                            <span class="legend-text">10万人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #734E30;"></div>
+                            <span class="legend-text">5万人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FFE500;"></div>
+                            <span class="legend-text">3万人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #4BB661;"></div>
+                            <span class="legend-text">1万人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1869F0;"></div>
+                            <span class="legend-text">5千人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #A4C5F9;"></div>
+                            <span class="legend-text">1千人以上</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #dcdcdc;"></div>
+                            <span class="legend-text">1千人未満</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="feature-section">
+                <h2><i class="fas fa-filter"></i> 条件を指定して駅を絞り込み検索</h2>
+                <p>
+                    都道府県別、路線別、乗降客数別の条件を指定して駅を検索できます。<br />
+                    特定エリアの駅一覧を確認したい場合や、利用者数の多い駅のみを抽出したい場合に便利です。
+                </p>
+            </section>
+
+            <section class="feature-section">
+                <h2><i class="fas fa-info-circle"></i> 乗降客数データについて</h2>
+                <p>
+                    本サイトで表示している駅別乗降客数データは、Wikipedia日本語版の各駅記事に掲載されている公開情報を基に作成しています。<br />
+                    データの出典およびライセンス条件については、地図ページ内の説明をご確認ください。
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 全国駅マップ. All rights reserved.</p>
+            <p class="footer-link"><a href="map.html">地図ページへ</a></p>
+        </div>
+    </footer>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4248082385618462" crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <!-- 構造化データ (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "全国駅マップ",
+        "description": "全国の駅を地図上で表示し、駅別の1日あたり乗降客数を色分けして確認できる全国駅マップです。都道府県や路線、乗降客数で絞り込み検索が可能。",
+        "url": "https://ji-develop.com/station/",
+        "applicationCategory": "MapApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY"
+        },
+        "featureList": [
+            "駅検索",
+            "都道府県別絞り込み",
+            "路線別絞り込み",
+            "乗降客数別絞り込み",
+            "地図上での駅表示"
+        ]
+    }
+    </script>
+</body>
+</html>
